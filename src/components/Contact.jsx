@@ -79,7 +79,7 @@ export default function Contact() {
     budget: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState(null); // 'success', 'error', or null
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -89,9 +89,37 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(r => setTimeout(r, 1100));
-    setLoading(false);
-    setSubmitted(true);
+    setStatus(null);
+
+    try {
+      // FormSubmit seamlessly handles the submission to your email.
+      // After your first submission, you'll need to check your email to confirm the form.
+      const response = await fetch("https://formsubmit.co/ajax/aryadevaskar@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...form,
+          _subject: `New Portfolio Inquiry: ${form.company || form.name}`,
+          _template: 'table',
+          _honey: '', // Honeypot field for spam protection
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success === "true" || response.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Staggered form field entrance
@@ -168,20 +196,20 @@ export default function Contact() {
           {/* Right — form */}
           <motion.div ref={ref}>
             <AnimatePresence mode="wait">
-              {submitted ? (
+              {status === 'success' ? (
                 <motion.div
                   key="success"
                   className="form-success"
-                  initial={{ opacity: 0, scale: 0.95, filter: 'blur(8px)' }}
-                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <motion.div
                     className="success-icon"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: 'spring', damping: 12, delay: 0.2 }}
                   >
                     <CheckIcon />
                   </motion.div>
@@ -190,7 +218,7 @@ export default function Contact() {
                       className="success-title"
                       initial={{ y: '100%' }}
                       animate={{ y: '0%' }}
-                      transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
                       Message <strong>received.</strong>
                     </motion.h3>
@@ -199,10 +227,22 @@ export default function Contact() {
                     className="success-text"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    Thanks for reaching out. I'll review your project details and get back to you within 24 hours.
+                    I've received your inquiry at <strong>aryadevaskar@gmail.com</strong>. <br />
+                    I'll review your details and personally reach out within 24 hours.
                   </motion.p>
+                  
+                  <motion.button 
+                    className="navbar-action" 
+                    onClick={() => setStatus(null)}
+                    style={{ marginTop: '24px', background: 'transparent', border: 'none', cursor: 'pointer' }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                  >
+                    Send another message
+                  </motion.button>
                 </motion.div>
               ) : (
                 <motion.form
@@ -211,9 +251,18 @@ export default function Contact() {
                   onSubmit={handleSubmit}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, y: -16 }}
-                  transition={{ duration: 0.4 }}
+                  exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                  transition={{ duration: 0.5 }}
                 >
+                  {status === 'error' && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }} 
+                      animate={{ opacity: 1, y: 0 }}
+                      style={{ color: '#ff4b4b', fontSize: '12px', marginBottom: '20px', padding: '12px', background: 'rgba(255,75,75,0.1)', borderRadius: '4px' }}
+                    >
+                      Something went wrong. Please try again or email directly.
+                    </motion.div>
+                  )}
                   {/* Name + Email row */}
                   <motion.div
                     className="form-row"
