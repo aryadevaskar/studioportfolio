@@ -7,6 +7,7 @@ import Testimonials from './components/Testimonials';
 import Kinetic from './components/Kinetic';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Pricing from './components/Pricing';
 
 // Smooth cursor glow that follows the mouse with lag
 function CursorGlow() {
@@ -50,6 +51,7 @@ function App() {
         <Hero />
         <Projects />
         <Testimonials />
+        <Pricing />
         <Kinetic />
         <Contact />
       </main>

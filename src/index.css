@@ -311,7 +311,6 @@ main {
 }
 
 .proj-editorial.proj-editorial--flip>div:nth-child(2) {
-  order: 1;
   border-right: var(--border);
   border-left: none;
 }
@@ -656,6 +655,195 @@ main {
   top: 0.55em;
   left: -0.35em;
   pointer-events: none;
+}
+
+/* ── PRICING SECTION ── */
+.pricing-section {
+  background: var(--white);
+  padding-bottom: 0;
+  border-bottom: var(--border);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: var(--border);
+  margin-top: 64px;
+}
+
+.pricing-tier {
+  padding: 110px 48px 80px;
+  display: flex;
+  flex-direction: column;
+  border-right: var(--border);
+  transition: background 0.5s var(--smooth);
+  position: relative;
+  height: 100%;
+}
+
+.pricing-tier:last-child {
+  border-right: none;
+}
+
+.pricing-tier--highlight {
+  background: #fcfcfc;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 52px;
+  left: 48px;
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding: 4px 10px;
+  border: 1px solid var(--black);
+  border-radius: 100px;
+  width: fit-content;
+  z-index: 5;
+  background: white;
+}
+
+.pricing-card-header {
+  height: 320px;
+  /* Rigid height to force alignment */
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 32px;
+  height: 14px;
+}
+
+.pricing-price-wrap {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+}
+
+.pricing-price {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--black);
+}
+
+.pricing-subline {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dark-gray);
+  max-width: 260px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.pricing-list {
+  list-style: none;
+  padding-top: 48px;
+  border-top: var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-grow: 1;
+  /* Pushes the button to the bottom */
+}
+
+.pricing-item {
+  font-size: 12.5px;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pricing-item-dot {
+  width: 3px;
+  height: 3px;
+  background: var(--mid);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pricing-cta-btn {
+  margin-top: 64px;
+  align-self: flex-end;
+  /* Keeps buttons in line if needed, but flex-grow on list is better */
+  width: 100%;
+  padding: 18px;
+  border: var(--border);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s var(--smooth);
+  text-align: center;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.pricing-tier--highlight .pricing-cta-btn {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.pricing-cta-btn:hover {
+  background: var(--black);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-tier {
+    border-right: none;
+    border-bottom: var(--border);
+    padding: 64px 36px;
+  }
+}
+
+.pricing-note {
+  padding: 40px 48px;
+  text-align: center;
+  border-top: var(--border);
+  background: #fafafa;
+}
+
+.pricing-note-text {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .pricing-note-text {
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.5;
+  }
 }
 
 /* ── KINETIC / WOW SECTION ── */
