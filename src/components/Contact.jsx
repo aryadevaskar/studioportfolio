@@ -181,7 +181,7 @@ export default function Contact() {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
-                <a href="mailto:hello@aryadevaskar.com">hello@aryadevaskar.com</a>
+                <a href="mailto:aryadevaskar@gmail.com">aryadevaskar@gmail.com</a>
               </div>
               <div className="contact-detail-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
