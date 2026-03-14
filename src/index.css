@@ -277,7 +277,7 @@ main {
 
 @media (max-width: 768px) {
   .section-header {
-    padding: 60px 24px 0;
+    padding: 60px 20px 0;
   }
 }
 
@@ -525,7 +525,11 @@ main {
   }
 
   .section-header {
-    padding: 60px 24px 0;
+    padding: 60px 20px 0;
+  }
+
+  .proj-info-col {
+    padding: 40px 20px;
   }
 }
 
@@ -561,6 +565,10 @@ main {
 }
 
 @media (max-width: 768px) {
+  .testimonials-inner {
+    padding: 0 20px;
+  }
+
   .testimonial-item {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -628,6 +636,17 @@ main {
   top: 0.55em;
   left: -0.35em;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .testimonial-quote {
+    padding-left: 28px;
+  }
+  
+  .testimonial-quote::before {
+    left: 0;
+    font-size: 3.5rem;
+  }
 }
 
 /* ── PRICING SECTION ── */
@@ -788,12 +807,23 @@ main {
   .pricing-tier {
     border-right: none;
     border-bottom: var(--border);
-    padding: 64px 36px;
+    padding: 84px 20px 64px;
+  }
+
+  .pricing-badge {
+    top: 36px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-note {
+    padding: 40px 20px;
   }
 }
 
 .pricing-note {
-  padding: 40px 48px;
+  padding: 40px 20px;
   text-align: center;
   border-top: var(--border);
   background: #fafafa;
@@ -909,7 +939,7 @@ main {
 @media (max-width: 1024px) {
   .kinetic-stats {
     grid-template-columns: repeat(2, 1fr);
-    padding: 48px 24px 0;
+    padding: 48px 20px 0;
     gap: 48px 0;
   }
 }
@@ -970,6 +1000,12 @@ main {
   background: var(--black);
   padding: 100px 36px;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 20px;
+  }
 }
 
 .contact-inner {
@@ -1070,15 +1106,16 @@ main {
 .form-label {
   font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.45); /* Increased from 0.3 */
   margin-bottom: 8px;
-  transition: color 0.3s;
+  transition: all 0.3s var(--smooth);
 }
 
 .form-group:focus-within .form-label {
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+  letter-spacing: 0.26em;
 }
 
 .form-input,
@@ -1098,7 +1135,7 @@ main {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.32); /* Increased from 0.18 */
 }
 
 .form-select {
@@ -1242,7 +1279,7 @@ main {
     flex-direction: column;
     gap: 16px;
     text-align: center;
-    padding: 32px 24px;
+    padding: 32px 20px;
   }
 }
 
