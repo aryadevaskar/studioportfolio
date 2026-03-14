@@ -16,7 +16,7 @@ const projects = [
     video: '/videos/spices.mp4',
     poster: goldenImpex,
     bg: '#ede6dd', // Warm beige from the video
-    url: '#',
+    url: 'https://www.parnikainternational.com/',
   },
   {
     id: 'promptly-ai',
@@ -29,7 +29,7 @@ const projects = [
     video: '/videos/saas.mp4',
     poster: promptlyAI,
     bg: '#000000', // Deep black for SaaS
-    url: '#',
+    url: 'https://refreshed-messages-134314.framer.app/',
   },
   {
     id: 'studio-noir',
@@ -184,7 +184,7 @@ function ProjectCard({ project, flip, index }) {
               <span className="proj-pill" key={t}>{t}</span>
             ))}
           </div>
-          <a href={project.url} className="proj-cta">
+          <a href={project.url} className="proj-cta" target="_blank" rel="noopener noreferrer">
             View Project
             <svg className="proj-cta-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
