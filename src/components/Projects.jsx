@@ -37,7 +37,7 @@ const projects = [
     year: '2025',
     name: 'Fable and Folk',
     category: 'Creative Studio · Branding',
-    desc: 'An editorial brand website for a luxury creative studio. Typographically rich, minimal, and built to attract premium clients, designed and developed in Figma and React.',
+    desc: 'The brand identity and website that started it all, now available as a template. Built for creative studios, agencies, and consultancies who want an editorial web presence without starting from scratch.',
     tags: ['Web Design', 'Webflow', 'Brand'],
     video: '/videos/agency.mp4',
     poster: studioBrand,
@@ -89,12 +89,6 @@ function VideoPanel({ video, poster, inView }) {
         preload="auto"
         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       />
-      {/* Subtle play indicator on hover */}
-      <div className="proj-play-hint">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <polygon points="5,3 19,12 5,21" />
-        </svg>
-      </div>
     </div>
   );
 }

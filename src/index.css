@@ -352,32 +352,6 @@ main {
   opacity: 0.6;
 }
 
-/* play indicator */
-.proj-play-hint {
-  position: absolute;
-  bottom: 28px;
-  left: 28px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s var(--smooth), transform 0.35s var(--smooth);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.proj-editorial:hover .proj-play-hint {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* info column */
 .proj-info-col {
   display: flex;
@@ -442,7 +416,6 @@ main {
   font-size: clamp(2rem, 3.5vw, 3.2rem);
   font-weight: 300;
   letter-spacing: -0.04em;
-  line-height: 1.05;
   color: var(--black);
   margin-bottom: 16px;
 }
