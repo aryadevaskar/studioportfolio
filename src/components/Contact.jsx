@@ -9,11 +9,11 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  'Under ₹50,000',
-  '₹50,000 – ₹1,50,000',
-  '₹1,50,000 – ₹5,00,000',
-  '₹5,00,000+',
-  'Let\'s talk',
+  'Under $399',
+  '$399 — Starter',
+  '$799 — Studio',
+  '$799+ — Custom',
+  'Not sure yet',
 ];
 
 // Staggered word reveal for the contact headline
@@ -96,7 +96,7 @@ export default function Contact() {
       // After your first submission, you'll need to check your email to confirm the form.
       const response = await fetch("https://formsubmit.co/ajax/aryadevaskar@gmail.com", {
         method: "POST",
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
@@ -232,9 +232,9 @@ export default function Contact() {
                     I've received your inquiry at <strong>aryadevaskar@gmail.com</strong>. <br />
                     I'll review your details and personally reach out within 24 hours.
                   </motion.p>
-                  
-                  <motion.button 
-                    className="navbar-action" 
+
+                  <motion.button
+                    className="navbar-action"
                     onClick={() => setStatus(null)}
                     style={{ marginTop: '24px', background: 'transparent', border: 'none', cursor: 'pointer' }}
                     initial={{ opacity: 0 }}
@@ -255,8 +255,8 @@ export default function Contact() {
                   transition={{ duration: 0.5 }}
                 >
                   {status === 'error' && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -10 }} 
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       style={{ color: '#ff4b4b', fontSize: '12px', marginBottom: '20px', padding: '12px', background: 'rgba(255,75,75,0.1)', borderRadius: '4px' }}
                     >
