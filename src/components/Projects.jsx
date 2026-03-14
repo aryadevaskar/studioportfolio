@@ -114,10 +114,11 @@ function ProjectCard({ project, flip, index }) {
     >
       {/* ── Video side ── */}
       <motion.div
+        className={project.bg === '#000000' || project.bg === 'var(--black)' ? 'bg-grain-overlay' : ''}
         initial={{ clipPath: flip ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' }}
         animate={inView ? { clipPath: 'inset(0 0% 0 0%)' } : {}}
         transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
-        style={{ display: 'block', backgroundColor: project.bg || 'var(--white)' }}
+        style={{ display: 'block', backgroundColor: project.bg || 'var(--white)', position: 'relative' }}
       >
         <VideoPanel video={project.video} poster={project.poster} inView={videoInView} />
       </motion.div>
