@@ -5,35 +5,19 @@ const testimonials = [
   {
     id: 't1',
     index: '01',
-    name: 'Jake Morrison',
-    role: 'Founder, Promptly AI',
-    location: 'San Francisco',
-    quote: 'We needed a landing page fast before our Product Hunt launch. Delivered in 4 days and it looked better than sites we\'d seen from agencies charging 5× more.',
+    name: 'Kartik Periwal',
+    role: 'Director, Parnika International',
+    location: 'India',
+    quote: 'I needed a professional website fast for our export business. The final result exceeded what I expected, clean design, easy to manage, and it looks credible to our international buyers.',
   },
   {
     id: 't2',
     index: '02',
-    name: 'Priya Nair',
-    role: 'CEO, Veda Organics',
-    location: 'Mumbai',
-    quote: 'Arya understood our brand from the very first call. The site doesn\'t just look beautiful — it actually converts. We saw a 40% uptick in inquiries within the first month.',
-  },
-  {
-    id: 't3',
-    index: '03',
-    name: 'Luca Ferretti',
-    role: 'Co-founder, Arc Studio',
-    location: 'Milan',
-    quote: 'Working on a portfolio site can feel personal and risky. Arya made it feel effortless — the final result was exactly what we had in our heads, but better.',
-  },
-  {
-    id: 't4',
-    index: '04',
-    name: 'Anika Mehta',
-    role: 'Head of Brand, Kasa Living',
-    location: 'London',
-    quote: 'The attention to typography and spacing alone set this apart from anything we\'d seen. Clean, considered, and unmistakably ours.',
-  },
+    name: 'Suyash',
+    role: 'Co-founder, Arc AI',
+    location: 'India',
+    quote: 'Needed a launch-ready landing page without spending weeks on design. The template gave us a professional dark SaaS aesthetic out of the box. Customized and live in two days.',
+  }
 ];
 
 // Splits a string into words and animates each one up from a mask

@@ -22,8 +22,8 @@ function ContactHeadline({ inView }) {
     { text: "Let's", weight: 300 },
     { text: 'make', weight: 300 },
     { text: 'something', weight: 300 },
-    { text: 'great', weight: 600 },
-    { text: 'together.', weight: 600 },
+    { text: 'great', weight: 500 },
+    { text: 'together.', weight: 500 },
   ];
 
   return (
@@ -139,7 +139,7 @@ export default function Contact() {
               animate={headlineInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
             >
-              Whether you need a landing page, a full brand website, or a complex web app — I partner with founders and teams who care about craft.
+              Whether you need a landing page, a full brand website, or a complex web app, Fable & Folk partners with founders and teams who care about craft.
             </motion.p>
 
             <motion.div
@@ -150,15 +150,15 @@ export default function Contact() {
             >
               <div className="contact-detail-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
                 </svg>
                 <a href="mailto:hello@aryadevaskar.com">hello@aryadevaskar.com</a>
               </div>
               <div className="contact-detail-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span>Bangalore, India · Available globally</span>
               </div>
@@ -260,7 +260,7 @@ export default function Contact() {
                   </motion.div>
 
                   <motion.div className="form-group" custom={4} variants={formFieldVariants} initial="hidden" animate={inView ? "visible" : "hidden"}>
-                    <label className="form-label" htmlFor="message">Tell me about your project</label>
+                    <label className="form-label" htmlFor="message">Tell us about your project</label>
                     <textarea id="message" name="message" className="form-textarea" placeholder="Timeline, goals, anything else relevant..." value={form.message} onChange={handleChange} required />
                   </motion.div>
 

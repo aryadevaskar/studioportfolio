@@ -11,7 +11,7 @@ const projects = [
     year: '2026',
     name: 'Parnika International',
     category: 'FMCG · Export',
-    desc: 'A premium B2B landing page for an Indian grocery and FMCG exporter — built to convert international distributors with clarity and craft.',
+    desc: 'A premium B2B export website built in React for an Indian grocery and FMCG exporter. Google Sheets CMS, scroll animations, working inquiry form, and conversion-focused design, delivered in under 2 weeks.',
     tags: ['Web Design', 'UI/UX', 'React'],
     video: '/videos/spices.mp4',
     poster: goldenImpex,
@@ -24,7 +24,7 @@ const projects = [
     year: '2024',
     name: 'Prism AI',
     category: 'SaaS · AI Tools',
-    desc: 'A product launch site for an AI prompt management platform. Delivered in 4 days, ahead of their Product Hunt launch.',
+    desc: 'A Framer SaaS landing page for an AI prompt management platform. Dark editorial aesthetic, animated wave hero, pricing section, and FAQ, built ahead of their Product Hunt launch.',
     tags: ['Web Design', 'Framer', 'Motion'],
     video: '/videos/saas.mp4',
     poster: promptlyAI,
@@ -37,7 +37,7 @@ const projects = [
     year: '2025',
     name: 'Fable and Folk',
     category: 'Creative Studio · Branding',
-    desc: 'An editorial portfolio for a luxury creative agency — minimal, typographically rich, unmistakably premium.',
+    desc: 'An editorial brand website for a luxury creative studio. Typographically rich, minimal, and built to attract premium clients, designed and developed in Figma and React.',
     tags: ['Web Design', 'Webflow', 'Brand'],
     video: '/videos/agency.mp4',
     poster: studioBrand,
@@ -217,7 +217,7 @@ export default function Projects() {
             animate={labelInView ? { y: '0%', opacity: 1 } : {}}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            Selected Work
+            SELECTED WORK | WEB DESIGN & DEVELOPMENT
           </motion.p>
         </div>
       </div>
