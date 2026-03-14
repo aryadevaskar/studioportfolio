@@ -27,7 +27,7 @@ function CountUp({ to, suffix = '', prefix = '' }) {
 }
 
 const stats = [
-  { value: 40, suffix: '+', label: 'Projects\ndelivered' },
+  { value: 3, suffix: '+', label: 'Projects\ndelivered' },
   { value: 5, suffix: ' days', label: 'Average\ndelivery time' },
   { value: 100, suffix: '%', label: 'Client\nretention' },
   { value: 24, suffix: 'h', label: 'Response\ntime' },
