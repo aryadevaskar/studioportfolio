@@ -5,7 +5,7 @@ const testimonials = [
   {
     id: 't1',
     index: '01',
-    name: 'Kartik Periwal',
+    name: 'Devendar Nehara',
     role: 'Director, Parnika International',
     location: 'India',
     quote: 'I needed a professional website fast for our export business. The final result exceeded what I expected, clean design, easy to manage, and it looks credible to our international buyers.',
@@ -13,7 +13,7 @@ const testimonials = [
   {
     id: 't2',
     index: '02',
-    name: 'Suyash',
+    name: 'Sai Kumar Goli',
     role: 'Co-founder, Arc AI',
     location: 'India',
     quote: 'Needed a launch-ready landing page without spending weeks on design. The template gave us a professional dark SaaS aesthetic out of the box. Customized and live in two days.',
