@@ -642,7 +642,7 @@ main {
   .testimonial-quote {
     padding-left: 28px;
   }
-  
+
   .testimonial-quote::before {
     left: 0;
     font-size: 3.5rem;
@@ -1108,7 +1108,8 @@ main {
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45); /* Increased from 0.3 */
+  color: rgba(255, 255, 255, 0.45);
+  /* Increased from 0.3 */
   margin-bottom: 8px;
   transition: all 0.3s var(--smooth);
 }
@@ -1135,7 +1136,8 @@ main {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.32); /* Increased from 0.18 */
+  color: rgba(255, 255, 255, 0.32);
+  /* Increased from 0.18 */
 }
 
 .form-select {

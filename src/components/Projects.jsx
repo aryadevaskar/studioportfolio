@@ -51,44 +51,40 @@ function VideoPanel({ video, poster, inView }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    let isMounted = true;
     const videoElement = videoRef.current;
     if (!videoElement) return;
 
-    const handlePlay = async () => {
-      try {
-        if (inView) {
-          // Reset highly recommended for some mobile browsers
-          if (videoElement.paused) {
-            await videoElement.play();
-          }
-        } else {
-          videoElement.pause();
+    if (inView) {
+      if (videoElement.paused) {
+        const playPromise = videoElement.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Autoplay might be blocked by browser policy
+          });
         }
-      } catch (err) {
-        // Silently handle autoplay blocks
       }
-    };
-
-    handlePlay();
-
-    return () => {
-      isMounted = false;
-    };
+    } else {
+      if (!videoElement.paused) {
+        videoElement.pause();
+      }
+    }
   }, [inView]);
 
   return (
     <div className="proj-video-col">
       <video
         ref={videoRef}
-        src={video}
         poster={poster}
         muted
         loop
         playsInline
+        autoPlay
         preload="auto"
         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-      />
+      >
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
 }
@@ -96,7 +92,7 @@ function VideoPanel({ video, poster, inView }) {
 function ProjectCard({ project, flip, index }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
-  const videoInView = useInView(ref, { margin: '-10%' });
+  const videoInView = useInView(ref, { margin: '100px' });
 
   return (
     <motion.div
