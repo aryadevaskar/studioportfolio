@@ -51,7 +51,7 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.5 }}
       >
-        <LiveClock timezone="Asia/Kolkata" city="BLR" />
+        <LiveClock timezone="Asia/Kolkata" city="GOA" />
         <LiveClock timezone="America/New_York" city="NYC" />
       </motion.div>
 
