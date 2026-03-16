@@ -13,7 +13,7 @@ const testimonials = [
   {
     id: 't2',
     index: '02',
-    name: 'Sai Kumar Goli',
+    name: 'Suyash',
     role: 'Co-founder, Arc AI',
     location: 'India',
     quote: 'Needed a launch-ready landing page without spending weeks on design. The template gave us a professional dark SaaS aesthetic out of the box. Customized and live in two days.',
