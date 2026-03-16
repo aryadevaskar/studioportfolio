@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import goldenImpex from '../assets/golden_impex.png';
-import promptlyAI from '../assets/promptly_ai.png';
-import studioBrand from '../assets/studio_brand.png';
+import goldenImpex from '../assets/spice.png';
+import promptlyAI from '../assets/tech.png';
+import studioBrand from '../assets/agency.png';
 
 const projects = [
   {
