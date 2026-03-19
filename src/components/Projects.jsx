@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import goldenImpex from '../assets/spice.png';
 import promptlyAI from '../assets/tech.png';
 import studioBrand from '../assets/agency.png';
@@ -46,9 +46,18 @@ const projects = [
   },
 ];
 
-// Auto-plays video when in view, pauses when not
+// Auto-plays video when in view, transitions smoothly from poster with parallax
 function VideoPanel({ video, poster, inView }) {
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const videoY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -58,9 +67,7 @@ function VideoPanel({ video, poster, inView }) {
       if (videoElement.paused) {
         const playPromise = videoElement.play();
         if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Autoplay might be blocked by browser policy
-          });
+          playPromise.catch(() => {});
         }
       }
     } else {
@@ -71,20 +78,55 @@ function VideoPanel({ video, poster, inView }) {
   }, [inView]);
 
   return (
-    <div className="proj-video-col">
-      <video
+    <div className="proj-video-col" ref={containerRef}>
+      {/* Fallback/Poster Image that fades out */}
+      <motion.img
+        src={poster}
+        alt=""
+        initial={{ opacity: 1, scale: 1.05 }}
+        animate={{ 
+          opacity: isReady ? 0 : 1,
+          scale: isReady ? 1 : 1.05
+        }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+          zIndex: 2,
+          pointerEvents: 'none',
+        }}
+      />
+      
+      <motion.video
         ref={videoRef}
-        poster={poster}
         muted
         loop
         playsInline
         autoPlay
         preload="auto"
-        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        onPlaying={() => setIsReady(true)}
+        className="proj-video-element"
+        style={{ 
+          width: '100%', 
+          height: '100%', 
+          objectFit: 'contain',
+          position: 'relative',
+          zIndex: 1,
+          opacity: isReady ? 1 : 0,
+          y: videoY,
+          scale: 1.15
+        }}
+        whileHover={{ scale: 1.18 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <source src={video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      </motion.video>
+
+      {/* Subtle overlay for depth */}
+      <div className="proj-video-overlay" style={{ zIndex: 3 }} />
     </div>
   );
 }
@@ -98,16 +140,16 @@ function ProjectCard({ project, flip, index }) {
     <motion.div
       ref={ref}
       className={`proj-editorial${flip ? ' proj-editorial--flip' : ''}`}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5, delay: 0.05 }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
     >
       {/* ── Video side ── */}
       <motion.div
         className={project.bg === '#000000' || project.bg === 'var(--black)' ? 'bg-grain-overlay' : ''}
         initial={{ clipPath: flip ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' }}
         animate={inView ? { clipPath: 'inset(0 0% 0 0%)' } : {}}
-        transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         style={{ display: 'block', backgroundColor: project.bg || 'var(--white)', position: 'relative' }}
       >
         <VideoPanel video={project.video} poster={project.poster} inView={videoInView} />
@@ -122,9 +164,9 @@ function ProjectCard({ project, flip, index }) {
           <div className="proj-label-row">
             <motion.span
               className="proj-index-label"
-              initial={{ opacity: 0, x: -8 }}
+              initial={{ opacity: 0, x: -12 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               {project.index} / {String(projects.length).padStart(2, '0')}
             </motion.span>
@@ -132,7 +174,7 @@ function ProjectCard({ project, flip, index }) {
               className="proj-year"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.4, duration: 0.45 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
               {project.year}
             </motion.span>
@@ -144,7 +186,7 @@ function ProjectCard({ project, flip, index }) {
               className="proj-title"
               initial={{ y: '110%' }}
               animate={inView ? { y: '0%' } : {}}
-              transition={{ duration: 0.75, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
               {project.name}
             </motion.h2>
@@ -152,18 +194,18 @@ function ProjectCard({ project, flip, index }) {
 
           <motion.p
             className="proj-category"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5, duration: 0.45 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
             {project.category}
           </motion.p>
 
           <motion.p
             className="proj-desc-text"
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.55, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.7, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             {project.desc}
           </motion.p>
@@ -171,9 +213,9 @@ function ProjectCard({ project, flip, index }) {
 
         <motion.div
           className="proj-info-bottom"
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="proj-pills">
             {project.tags.map(t => (

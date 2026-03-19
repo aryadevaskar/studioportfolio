@@ -329,12 +329,11 @@ main {
   height: 100%;
   object-fit: contain;
   display: block;
-  transition: opacity 0.5s;
-  opacity: 1;
 }
 
-.proj-editorial:hover .proj-video-col video {
-  opacity: 1;
+/* video loading states handled in JS */
+.proj-video-element {
+  will-change: transform, opacity;
 }
 
 /* gradient at bottom of video for subtle depth */
